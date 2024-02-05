@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import ArtPieces from "./components/ArtPieces.js";
+import ArtPieces from "@/components/ArtPieces";
 
 export const fetcher = async (url) => {
   const response = await fetch(url);
