@@ -10,7 +10,16 @@ export default createGlobalStyle`
   body {
     margin: 0;
     font-family: system-ui;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
   }
+
+  
 
   img {
     width: 200px;
