@@ -1,4 +1,5 @@
 import { useRouter } from "next/router"; // accessing the query parameters in the component
+import { useEffect, useState } from "react";
 import ArtPieceDetails from "@/components/ArtPieceDetails";
 
 export default function ArtPieceDetailsPage() {
