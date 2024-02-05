@@ -1,29 +1,6 @@
-import useSWR from "swr";
 import ArtPieces from "@/components/ArtPieces";
 import Spotlight from "@/components/Spotlight";
-import Image from "next/image";
-
-export const fetcher = async (url) => {
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  return response.json();
-};
-
-export const useArtPieces = () => {
-  const { data, error } = useSWR(
-    "https://example-apis.vercel.app/api/art",
-    fetcher
-  );
-
-  return {
-    artPieces: data,
-    isLoading: !error && !data,
-    isError: error,
-  };
-};
-
+import { useArtPieces } from "./_app";
 const getRandomArtPiece = (artPieces) => {
   const randomIndex = Math.floor(Math.random() * artPieces.length);
   return artPieces[randomIndex];
