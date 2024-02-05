@@ -12,7 +12,4 @@ export default createGlobalStyle`
     font-family: system-ui;
   }
 
-  img {
-    width: 200px;
-  }
 `;
