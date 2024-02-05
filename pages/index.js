@@ -37,7 +37,7 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Art Gallery</h1>
+      <h1>Art Gallery App</h1>
       <ArtPieces pieces={artPieces} />
     </div>
   );

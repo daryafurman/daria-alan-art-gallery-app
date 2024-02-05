@@ -1,5 +1,6 @@
 import ArtPiecePreview from "./ArtPiecePreview";
 
+// component should render a list of ArtPiecePreview
 export default function ArtPieces({ pieces }) {
   return (
     <>
@@ -7,9 +8,9 @@ export default function ArtPieces({ pieces }) {
         {pieces?.map((piece) => (
           <li key={piece.slug}>
             <ArtPiecePreview
-              name={piece.name}
+              title={piece.name}
               artist={piece.artist}
-              imageSource={piece.imageSource}
+              image={piece.imageSource}
             />
           </li>
         ))}

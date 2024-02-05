@@ -1,8 +1,8 @@
-export default function ArtPiecePreview({ name, artist, imageSource }) {
+export default function ArtPiecePreview({ title, artist, image }) {
   return (
     <>
-      <h1>{name}</h1>
-      <img src={imageSource} alt={name} width={200} height={200} />
+      <h1>{title}</h1>
+      <img src={image} alt={title} />
       <p>Artist: {artist}</p>
     </>
   );
