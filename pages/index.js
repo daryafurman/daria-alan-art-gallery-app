@@ -1,5 +1,7 @@
 import useSWR from "swr";
 import ArtPieces from "@/components/ArtPieces";
+import Spotlight from "@/components/Spotlight";
+import Image from "next/image";
 
 export const fetcher = async (url) => {
   const response = await fetch(url);
@@ -22,6 +24,11 @@ export const useArtPieces = () => {
   };
 };
 
+const getRandomArtPiece = (artPieces) => {
+  const randomIndex = Math.floor(Math.random() * artPieces.length);
+  return artPieces[randomIndex];
+};
+
 // fetch ArtPieces and display it:
 
 const Home = () => {
@@ -35,9 +42,17 @@ const Home = () => {
     return <p>Error loading data</p>;
   }
 
+  const spotlightPiece = getRandomArtPiece(artPieces);
+
   return (
     <div>
       <h1>Art Gallery App</h1>
+      <Spotlight
+        image={spotlightPiece.imageSource}
+        artist={spotlightPiece.artist}
+        title={spotlightPiece.name}
+      />
+
       <ArtPieces pieces={artPieces} />
     </div>
   );

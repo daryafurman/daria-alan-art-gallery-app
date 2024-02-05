@@ -14,5 +14,6 @@ export default createGlobalStyle`
 
   img {
     width: 200px;
+    heigth: auto;
   }
 `;
