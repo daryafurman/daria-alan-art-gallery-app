@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useRouter } from "next/router";
 import ArtPieceDetails from "@/components/ArtPieceDetails";
 
@@ -5,7 +6,10 @@ export default function ArtPieceDetailsPage({ artPiecesInfo }) {
   const router = useRouter();
   const { slug } = router.query;
 
-  console.log(artPiecesInfo);
+  // State hook for storing comments
+  const [comments, setComments] = useState([]); // added a comments state using the useState hook and passed it as a prop to ArtPieceDetails
+  // also passed function onSubmitComment that updates the comments state by appending a new comment.
+
   // Find the art piece based on the slug
   const selectedArtPiece = artPiecesInfo.find(
     (artPiece) => artPiece.slug === slug
@@ -24,6 +28,8 @@ export default function ArtPieceDetailsPage({ artPiecesInfo }) {
         artist={selectedArtPiece.artist}
         year={selectedArtPiece.year}
         genre={selectedArtPiece.genre}
+        comments={comments}
+        onSubmitComment={(newComment) => setComments([...comments, newComment])}
       />
     </>
   );
