@@ -2,6 +2,7 @@ import GlobalStyle from "../styles";
 import useSWR from "swr";
 import { createContext, useContext } from "react";
 import Layout from "@/components/Layout";
+import { useImmerLocalStorageState } from "../lib/hook/useImmerLocalStorageState.js";
 
 const ArtContext = createContext(); //creating a context to hold the global state
 
@@ -33,6 +34,11 @@ export const ArtProvider = ({ children }) => {
 };
 
 export default function App({ Component, pageProps }) {
+  const [artPiecesInfo, setArtPiecesInfo] = useImmerLocalStorageState(
+    "art-pieces-info",
+    { defaultValue: [] }
+  );
+
   return (
     <>
       <GlobalStyle />
