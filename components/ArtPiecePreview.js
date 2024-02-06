@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Image from "next/image";
+import Link from "next/link";
 
 const ArtContainer = styled.div`
   padding: 20px;
@@ -17,11 +18,13 @@ const ArtContainer = styled.div`
   align-items: center;
 `;
 
-export default function ArtPiecePreview({ title, artist, image }) {
+export default function ArtPiecePreview({ title, artist, image ,piece}) {
   return (
     <ArtContainer>
       <h3>{title}</h3>
+      <Link href={`/art-pieces/${encodeURIComponent(piece)}`}>
       <Image className="box" src={image} alt={title} width={500} height={300} />
+      </Link>
       <p>Artist: {artist}</p>
     </ArtContainer>
   );

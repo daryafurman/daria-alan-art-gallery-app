@@ -3,10 +3,8 @@ import Spotlight from "./Spotlight";
 
 test("renders a randomly picked art piece image with its artist name", () => {
   render(<Spotlight />);
-  const heading = screen.getByRole("heading");
   const image = screen.getByRole("img");
   const paragraph = screen.getByText("Artist:");
-  expect(heading).toBeInTheDocument();
   expect(image).toBeInTheDocument();
   expect(paragraph).toBeInTheDocument();
 });

@@ -33,12 +33,24 @@ export const ArtProvider = ({ children }) => {
 };
 
 export default function App({ Component, pageProps }) {
+  const { artPieces, isLoading, isError } = useArtPieces();
+
+  if (isLoading) {
+    // Handle loading state
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    // Handle error state
+    return <div>Error fetching art pieces!</div>;
+  }
+
   return (
     <>
       <GlobalStyle />
       <ArtProvider>
         <Layout>
-          <Component {...pageProps} />
+          <Component {...pageProps} artPieces={artPieces} />
         </Layout>
       </ArtProvider>
     </>
