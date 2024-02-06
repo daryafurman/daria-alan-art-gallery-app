@@ -1,28 +1,11 @@
 import ArtPieces from "@/components/ArtPieces";
 import Spotlight from "@/components/Spotlight";
 import { useArtPieces } from "./_app";
-import styled from "styled-components";
 
 const getRandomArtPiece = (artPieces) => {
   const randomIndex = Math.floor(Math.random() * artPieces.length);
   return artPieces[randomIndex];
 };
-
-const SpotlightArt = styled.div`
-  padding: 20px;
-  width: auto;
-  max-width: 400px;
-  margin: 40px auto;
-  color: #7c7979;
-  background: #ffffff08;
-  border-radius: 16px;
-  box-shadow: 0 4px 30px #0000001a;
-  backdrop-filter: blur(16.4px);
-  -webkit-backdrop-filter: blur(16.4px);
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-`;
 
 const SpotlightPage = () => {
   const { artPieces, isLoading, isError } = useArtPieces();
@@ -38,13 +21,21 @@ const SpotlightPage = () => {
   const spotlightPiece = getRandomArtPiece(artPieces);
 
   return (
-    <SpotlightArt>
+    <>
+      <h1>
+        ART GALLERY{" "}
+        <style jsx>{`
+          h1 {
+            text-align: center;
+          }
+        `}</style>
+      </h1>
       <Spotlight
         image={spotlightPiece.imageSource}
         artist={spotlightPiece.artist}
         title={spotlightPiece.name}
       />
-    </SpotlightArt>
+    </>
   );
 };
 

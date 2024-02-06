@@ -8,7 +8,8 @@ export default createGlobalStyle`
     box-sizing: border-box;
     background-color: #fafaf0;
     font-family: 'Signate Grotesk', sans-serif;
-                                                
+    font-weight: 400; 
+    color: #364435;                                     
   }
 
   body {

@@ -8,16 +8,26 @@ const List = styled.ul`
 // component should render a list of ArtPiecePreview
 export default function ArtPieces({ pieces }) {
   return (
-    <List>
-      {pieces?.map((piece) => (
-        <li key={piece.slug}>
-          <ArtPiecePreview
-            title={piece.name}
-            artist={piece.artist}
-            image={piece.imageSource}
-          />
-        </li>
-      ))}
-    </List>
+    <>
+      <h1>
+        ART GALLERY{" "}
+        <style jsx>{`
+          h1 {
+            text-align: center;
+          }
+        `}</style>
+      </h1>
+      <List>
+        {pieces?.map((piece) => (
+          <li key={piece.slug}>
+            <ArtPiecePreview
+              title={piece.name}
+              artist={piece.artist}
+              image={piece.imageSource}
+            />
+          </li>
+        ))}
+      </List>
+    </>
   );
 }

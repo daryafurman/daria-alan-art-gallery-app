@@ -2,6 +2,13 @@ import Link from "next/link";
 
 import styled from "styled-components";
 
+const FooterContainer = styled.footer`
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+`;
+
 const List = styled.ul`
   padding-left: 0;
   list-style: none;
@@ -12,6 +19,7 @@ const List = styled.ul`
   margin: 0;
   align-items: center;
   font-size: 25px;
+  color: #364435;
 `;
 
 const NavLink = styled(Link)`
@@ -26,25 +34,27 @@ const NavLink = styled(Link)`
 
 const Navigation = () => {
   return (
-    <nav>
-      <List role="list">
-        <li>
-          <NavLink href="/" passHref>
-            Spotlight
-          </NavLink>
-        </li>
-        <li>
-          <NavLink href="/art-pieces" passHref>
-            Art Pieces
-          </NavLink>
-        </li>
-        <li>
-          <NavLink href="/favorites" passHref>
-            Favorites
-          </NavLink>
-        </li>
-      </List>
-    </nav>
+    <FooterContainer>
+      <nav>
+        <List role="list">
+          <li>
+            <NavLink $isActive={true} href="/" passHref>
+              Spotlight
+            </NavLink>
+          </li>
+          <li>
+            <NavLink href="/art-pieces" passHref>
+              Art Pieces
+            </NavLink>
+          </li>
+          <li>
+            <NavLink href="/favorites" passHref>
+              Favorites
+            </NavLink>
+          </li>
+        </List>
+      </nav>
+    </FooterContainer>
   );
 };
 
