@@ -21,14 +21,21 @@ const SpotlightPage = () => {
   const spotlightPiece = getRandomArtPiece(artPieces);
 
   return (
-    <div>
-      <h1>Spotlight Page</h1>
+    <>
+      <h1>
+        ART GALLERY{" "}
+        <style jsx>{`
+          h1 {
+            text-align: center;
+          }
+        `}</style>
+      </h1>
       <Spotlight
         image={spotlightPiece.imageSource}
         artist={spotlightPiece.artist}
         title={spotlightPiece.name}
       />
-    </div>
+    </>
   );
 };
 
