@@ -1,30 +1,27 @@
 import { useRouter } from "next/router";
 import ArtPieceDetails from "@/components/ArtPieceDetails";
 
-export default function ArtPieceDetailsPage({}) {
+export default function ArtPieceDetailsPage({ artPieces }) {
   const router = useRouter();
   const { slug } = router.query;
-  console.log("slug: ", slug);
+
+  // Find the art piece based on the slug
+  const selectedArtPiece = artPieces.find((artPiece) => artPiece.slug === slug);
+
+  if (!selectedArtPiece) {
+    // Handle case where art piece is not found
+    return <div>Art piece not found!</div>;
+  }
 
   return (
     <>
       <ArtPieceDetails
-        title="Orange Red and Green Abstract Painting"
-        image="https://example-apis.vercel.app/assets/art/orange-red-and-green.jpg"
-        artist="Steve Johnson"
-        year={2018}
-        genre="Abstract Painting"
+        title={selectedArtPiece.name}
+        image={selectedArtPiece.imageSource}
+        artist={selectedArtPiece.artist}
+        year={selectedArtPiece.year}
+        genre={selectedArtPiece.genre}
       />
     </>
   );
-}
-
-{
-  /* <ArtPieceDetails
-        title={slug.name}
-        image={slug.imageSource}
-        artist={slug.artist}
-        year={slug.year}
-        genre={slug.genre}
-      /> */
 }

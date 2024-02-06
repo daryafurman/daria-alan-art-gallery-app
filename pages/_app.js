@@ -52,6 +52,19 @@ export default function App({ Component, pageProps }) {
       setArtPiecesInfo([...artPiecesInfo, { slug, isFavorite: true }]);
     }
   }
+
+  const { artPieces, isLoading, isError } = useArtPieces();
+
+  if (isLoading) {
+    // Handle loading state
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    // Handle error state
+    return <div>Error fetching art pieces!</div>;
+  }
+
   return (
     <>
       <GlobalStyle />

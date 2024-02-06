@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Image from "next/image";
+import Link from "next/link";
 import FavoriteButton from "./FavoriteButton";
 
 const ArtImageContainer = styled.div``;
@@ -26,18 +27,22 @@ export default function ArtPiecePreview({
   image,
   onToggleFavorite,
   isFavorite,
+  piece,
 }) {
   return (
     <ArtContainer>
       <h3>{title}</h3>
       <ArtImageContainer>
+     <Link href={`/art-pieces/${encodeURIComponent(piece)}`}>
         <FavoriteButton
           isFavorite={isFavorite}
           onToggleFavorite={onToggleFavorite}
           positionAbsolute={true}
         ></FavoriteButton>
         <Image src={image} width={500} height={300} alt={title} />
+        </Link>
       </ArtImageContainer>
+
       <p>Artist: {artist}</p>
     </ArtContainer>
   );
