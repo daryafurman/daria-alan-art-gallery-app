@@ -67,4 +67,30 @@ p {
   align-items: center;
   }
 
+  textarea {
+    border-radius: 10px;
+    font-size: large;
+  }
+
+.submit-comment-button {
+  border-radius: 10px;
+    font-size: large;
+}
+
+.comment-items {
+  list-style-type: none;
+}
+
+.comment-form {
+  margin-bottom: 25px;
+}
+
+.comments-container{
+  max-width: 800px;
+}
+
+.comment-date{
+  font-size: medium;
+}
+
 `;
