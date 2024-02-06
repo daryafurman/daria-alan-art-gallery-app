@@ -4,7 +4,8 @@ import { createContext, useContext } from "react";
 import Layout from "@/components/Layout";
 import { useImmerLocalStorageState } from "../public/lib/hook/useImmerLocalStorageState.js";
 
-const ArtContext = createContext(); //creating a context to hold the global state
+
+export const ArtContext = createContext(); // Creating a context to hold the global state
 
 export const fetcher = async (url) => {
   const response = await fetch(url);
@@ -29,15 +30,11 @@ export const useArtPieces = () => {
 
 export const ArtProvider = ({ children }) => {
   const artState = useArtPieces();
-
-  return <ArtContext.Provider value={artState}>{children}</ArtContext.Provider>;
-};
-
-export default function App({ Component, pageProps }) {
   const [artPiecesInfo, setArtPiecesInfo] = useImmerLocalStorageState(
     "art-pieces-info",
     { defaultValue: [] }
   );
+
   function handleToggleFavorite(slug) {
     const artPiece = artPiecesInfo.find((piece) => piece.slug === slug);
     if (artPiece) {
@@ -53,6 +50,16 @@ export default function App({ Component, pageProps }) {
     }
   }
 
+  return (
+    <ArtContext.Provider
+      value={{ artState, artPiecesInfo, handleToggleFavorite }}
+    >
+      {children}
+    </ArtContext.Provider>
+  );
+};
+
+export default function App({ Component, pageProps }) {
   const { artPieces, isLoading, isError } = useArtPieces();
 
   if (isLoading) {
@@ -70,11 +77,7 @@ export default function App({ Component, pageProps }) {
       <GlobalStyle />
       <ArtProvider>
         <Layout>
-          <Component
-            {...pageProps}
-            artPiecesInfo={artPieces}
-            onToggleFavorite={handleToggleFavorite}
-          />
+          <Component {...pageProps} artPieces={artPieces} />
         </Layout>
       </ArtProvider>
     </>

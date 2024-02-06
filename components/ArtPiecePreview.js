@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
@@ -20,24 +21,28 @@ const ArtContainer = styled.div`
   -webkit-backdrop-filter: blur(16.4px);
 `;
 
-export default function ArtPiecePreview({
+const ArtPiecePreview = ({
   title,
   artist,
   image,
-  piece,
+  slug,
   onToggleFavorite,
-  isFavorite,
-}) {
+  isFavorited,
+}) => {
+  const toggleFavorite = () => {
+    onToggleFavorite(slug);
+  };
   return (
     <ArtContainer>
       <h3>{title}</h3>
       <ArtImageContainer>
         <FavoriteButton
-          isFavorite={isFavorite}
-          onToggleFavorite={onToggleFavorite}
+          isFavorited={isFavorited}
+          onToggleFavorite={toggleFavorite}
           positionAbsolute={true}
-        ></FavoriteButton>
-        <Link href={`/art-pieces/${encodeURIComponent(piece)}`}>
+          slug={slug}
+        />
+        <Link href={`/art-pieces/${encodeURIComponent(slug)}`}>
           <Image
             className="box"
             src={image}
@@ -50,4 +55,6 @@ export default function ArtPiecePreview({
       <p>Artist: {artist}</p>
     </ArtContainer>
   );
-}
+};
+
+export default ArtPiecePreview;

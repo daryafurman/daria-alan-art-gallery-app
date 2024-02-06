@@ -19,9 +19,10 @@ export default function ArtPieces({ pieces }) {
         {pieces?.map((piece) => (
           <li key={piece.slug}>
             <ArtPiecePreview
-              piece={piece.slug}
+              slug={piece.slug}
               title={piece.name}
               artist={piece.artist}
+              isFavorited={piece.isFavorite}
               image={piece.imageSource}
             />
           </li>

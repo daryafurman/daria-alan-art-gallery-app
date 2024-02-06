@@ -1,6 +1,7 @@
 import Link from "next/link";
-
+import { useContext } from "react";
 import styled from "styled-components";
+import { ArtContext } from "../pages/_app";
 
 // const FooterContainer = styled.footer`
 //   position: fixed;
@@ -44,12 +45,18 @@ const NavLink = styled(Link)`
 `;
 
 const Navigation = () => {
+  const { artPiecesInfo } = useContext(ArtContext);
+
+  // Count the number of favorite art pieces
+  const numFavorites = artPiecesInfo.filter(
+    (artPiece) => artPiece.isFavorite
+  ).length;
   return (
     <FooterContainer>
       <nav>
         <List role="list">
           <li>
-            <NavLink $isActive={true} href="/" passHref>
+            <NavLink href="/" passHref>
               Spotlight
             </NavLink>
           </li>
@@ -60,7 +67,7 @@ const Navigation = () => {
           </li>
           <li>
             <NavLink href="/favorites" passHref>
-              Favorites
+              Favorites {numFavorites > 0 && `(${numFavorites})`}
             </NavLink>
           </li>
         </List>
@@ -70,3 +77,5 @@ const Navigation = () => {
 };
 
 export default Navigation;
+
+//

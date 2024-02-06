@@ -24,6 +24,7 @@ export default function Spotlight({
   title,
   onToggleFavorite,
   isFavorite,
+  slug,
 }) {
   return (
     <>
@@ -33,6 +34,7 @@ export default function Spotlight({
             isFavorite={isFavorite}
             onToggleFavorite={onToggleFavorite}
             positionAbsolute={true}
+            slug={slug}
           ></FavoriteButton>
           <Image src={image} width={500} height={300} alt={title} />
         </SpotlightImageContainer>

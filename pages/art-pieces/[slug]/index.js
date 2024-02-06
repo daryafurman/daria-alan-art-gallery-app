@@ -5,7 +5,6 @@ export default function ArtPieceDetailsPage({ artPiecesInfo }) {
   const router = useRouter();
   const { slug } = router.query;
 
-  console.log(artPiecesInfo);
   // Find the art piece based on the slug
   const selectedArtPiece = artPiecesInfo.find(
     (artPiece) => artPiece.slug === slug
