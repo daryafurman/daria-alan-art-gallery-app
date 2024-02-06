@@ -2,11 +2,22 @@ import Link from "next/link";
 
 import styled from "styled-components";
 
+// const FooterContainer = styled.footer`
+//   position: fixed;
+//   left: 0;
+//   bottom: 0;
+//   width: 100%;
+// `;
+
 const FooterContainer = styled.footer`
   position: fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   left: 0;
   bottom: 0;
   width: 100%;
+  box-shadow: 0 4px 20px hsla(0, 0%, 0%, 0.1);
 `;
 
 const List = styled.ul`
