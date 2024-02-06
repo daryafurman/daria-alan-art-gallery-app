@@ -20,7 +20,7 @@ export default createGlobalStyle`
   
 
   img {
-    width: 200px;
+    width: auto;
     heigth: auto;
   }
 `;

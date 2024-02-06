@@ -3,19 +3,11 @@ import Image from "next/image";
 export default function ArtPieceDetails({ image, title, artist, year, genre }) {
   return (
     <>
-      <h1>←</h1>
-      <h2>{title}</h2>
-      <Image src={image} alt={title} />
-      <ul>
-        {colors.map((color, index) => (
-          <li key={index} color={color} aria-label={color} />
-        ))}
-      </ul>
-      <ul>
-        <li>{artist}</li>
-        <li>{year}</li>
-        <li>{genre}</li>
-      </ul>
+      <h1>{title}</h1>
+      <Image src={image} alt={title} width={500} height={400} />
+      <h3>Artist: {artist}</h3>
+      <h3>Year: {year}</h3>
+      <h3>Genre: {genre}</h3>
     </>
   );
 }
