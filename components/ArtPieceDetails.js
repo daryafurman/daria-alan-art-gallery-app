@@ -31,6 +31,30 @@ export default function ArtPieceDetails({
       <div className="comments-container">
         <h2>Comments</h2>
         <ul className="comment-items">
+          {comments && comments.length > 0 ? (
+            comments.map((comment, index) => (
+              <li key={index}>
+                {comment.text}
+                <br />
+                <br />
+                <div className="comment-date">Posted on {comment.date}</div>
+                <hr />
+              </li>
+            ))
+          ) : (
+            <li>No comments yet.</li>
+          )}
+        </ul>
+      </div>
+
+      {/* Render CommentForm and pass onSubmitComment as a prop */}
+      <CommentForm onSubmitComment={onSubmitComment} />
+    </>
+  );
+}
+
+{
+  /* <ul className="comment-items">
           {comments.map((comment, index) => (
             <li key={index}>
               {comment.text}
@@ -40,11 +64,7 @@ export default function ArtPieceDetails({
               <hr />
             </li>
           ))}
-        </ul>
-      </div>
-
-      {/* Render CommentForm and pass onSubmitComment as a prop */}
-      <CommentForm onSubmitComment={onSubmitComment} />
-    </>
-  );
+        </ul> */
 }
+
+// In this modification, I added a conditional check comments && comments.length > 0 before mapping over the comments array. This ensures that the mapping only occurs if comments is defined and has at least one item. If comments is undefined or empty, it will display a message saying "No comments yet.".
