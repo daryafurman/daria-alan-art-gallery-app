@@ -2,6 +2,7 @@ import GlobalStyle from "../styles";
 import useSWR from "swr";
 import { createContext, useContext } from "react";
 import Layout from "@/components/Layout";
+import { useImmerLocalStorageState } from "../public/lib/hook/useImmerLocalStorageState.js";
 
 const ArtContext = createContext(); //creating a context to hold the global state
 
@@ -33,6 +34,25 @@ export const ArtProvider = ({ children }) => {
 };
 
 export default function App({ Component, pageProps }) {
+  const [artPiecesInfo, setArtPiecesInfo] = useImmerLocalStorageState(
+    "art-pieces-info",
+    { defaultValue: [] }
+  );
+  function handleToggleFavorite(slug) {
+    const artPiece = artPiecesInfo.find((piece) => piece.slug === slug);
+    if (artPiece) {
+      setArtPiecesInfo(
+        artPiecesInfo.map((pieceInfo) =>
+          pieceInfo.slug === slug
+            ? { slug, isFavorite: !pieceInfo.isFavorite }
+            : pieceInfo
+        )
+      );
+    } else {
+      setArtPiecesInfo([...artPiecesInfo, { slug, isFavorite: true }]);
+    }
+  }
+
   const { artPieces, isLoading, isError } = useArtPieces();
 
   if (isLoading) {
@@ -50,7 +70,11 @@ export default function App({ Component, pageProps }) {
       <GlobalStyle />
       <ArtProvider>
         <Layout>
-          <Component {...pageProps} artPieces={artPieces} />
+          <Component
+            {...pageProps}
+            artPiecesInfo={artPiecesInfo}
+            onToggleFavorite={handleToggleFavorite}
+          />
         </Layout>
       </ArtProvider>
     </>

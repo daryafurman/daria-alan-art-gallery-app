@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styled from "styled-components";
+import FavoriteButton from "./FavoriteButton";
 
 const SpotlightArt = styled.div`
   padding: 20px;
@@ -17,14 +18,27 @@ const SpotlightArt = styled.div`
   align-items: center;
 `;
 
-export default function Spotlight({ image, artist, title }) {
+const SpotlightImageContainer = styled.div``;
+
+export default function Spotlight({
+  image,
+  artist,
+  title,
+  onToggleFavorite,
+  isFavorite,
+}) {
   return (
-    <>
-      <SpotlightArt>
+    <SpotlightArt>
+      <SpotlightImageContainer>
+        <FavoriteButton
+          isFavorite={isFavorite}
+          onToggleFavorite={onToggleFavorite}
+          positionAbsolute={true}
+        ></FavoriteButton>
         <Image src={image} width={500} height={300} alt={title} />
-        <p>Artist: {artist}</p>
-      </SpotlightArt>
-    </>
+      </SpotlightImageContainer>
+      <p>Artist: {artist}</p>
+    </SpotlightArt>
   );
 }
 {
