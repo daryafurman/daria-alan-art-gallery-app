@@ -5,18 +5,16 @@ const List = styled.ul`
   list-style: none;
 `;
 
+const StyledHeader = styled.h1`
+  text-align: center;
+`;
+
 // component should render a list of ArtPiecePreview
 export default function ArtPieces({ pieces }) {
   return (
     <>
-      <h1>
-        ART GALLERY{" "}
-        <style jsx>{`
-          h1 {
-            text-align: center;
-          }
-        `}</style>
-      </h1>
+      <StyledHeader>ART GALLERY</StyledHeader>
+
       <List>
         {pieces?.map((piece) => (
           <li key={piece.slug}>
@@ -30,6 +28,5 @@ export default function ArtPieces({ pieces }) {
         ))}
       </List>
     </>
-
   );
 }
