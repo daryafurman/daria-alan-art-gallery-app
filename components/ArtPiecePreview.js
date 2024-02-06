@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
+import FavoriteButton from "./FavoriteButton";
+
+const ArtImageContainer = styled.div``;
 
 const ArtContainer = styled.div`
   display: flex;
@@ -16,6 +19,7 @@ const ArtContainer = styled.div`
   backdrop-filter: blur(16.4px);
   -webkit-backdrop-filter: blur(16.4px);
 `;
+
 
 export default function ArtPiecePreview({ title, artist, image, piece }) {
   return (
