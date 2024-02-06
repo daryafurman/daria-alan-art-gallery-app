@@ -28,7 +28,14 @@ export default function Spotlight({
   return (
     <>
       <SpotlightArt>
-        <Image src={image} width={500} height={500} alt={title} />
+        <SpotlightImageContainer>
+          <FavoriteButton
+            isFavorite={isFavorite}
+            onToggleFavorite={onToggleFavorite}
+            positionAbsolute={true}
+          ></FavoriteButton>
+          <Image src={image} width={500} height={300} alt={title} />
+        </SpotlightImageContainer>
         <p>Artist: {artist}</p>
       </SpotlightArt>
     </>

@@ -20,20 +20,33 @@ const ArtContainer = styled.div`
   -webkit-backdrop-filter: blur(16.4px);
 `;
 
-
-export default function ArtPiecePreview({ title, artist, image, piece }) {
+export default function ArtPiecePreview({
+  title,
+  artist,
+  image,
+  piece,
+  onToggleFavorite,
+  isFavorite,
+}) {
   return (
     <ArtContainer>
       <h3>{title}</h3>
-      <Link href={`/art-pieces/${encodeURIComponent(piece)}`}>
-        <Image
-          className="box"
-          src={image}
-          alt={title}
-          width={500}
-          height={300}
-        />
-      </Link>
+      <ArtImageContainer>
+        <FavoriteButton
+          isFavorite={isFavorite}
+          onToggleFavorite={onToggleFavorite}
+          positionAbsolute={true}
+        ></FavoriteButton>
+        <Link href={`/art-pieces/${encodeURIComponent(piece)}`}>
+          <Image
+            className="box"
+            src={image}
+            alt={title}
+            width={500}
+            height={300}
+          />
+        </Link>
+      </ArtImageContainer>
       <p>Artist: {artist}</p>
     </ArtContainer>
   );

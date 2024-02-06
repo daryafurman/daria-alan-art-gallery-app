@@ -4,6 +4,7 @@ export default function ArtPieceDetails({ image, title, artist, year, genre }) {
   return (
     <>
       <h1>{title}</h1>
+
       <Image
         className="art-piece-detail-image"
         src={image}
