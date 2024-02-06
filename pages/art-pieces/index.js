@@ -11,9 +11,8 @@ export default function ArtPiecesPage() {
     return <p>Error loading data</p>;
   }
   return (
-    <div>
-      <h1>Art Pieces Page</h1>
+    <>
       <ArtPieces pieces={artPieces} />
-    </div>
+    </>
   );
 }
