@@ -10,54 +10,30 @@ export default createGlobalStyle`
     background-color: #fafaf0;
     font-family: 'Gowun Dodum', sans-serif;
     font-weight: 100; 
-    color: #364435;                                     
+    color: #364435;                        
   }
   
-
   body {
-  font-family: 'Gowun Dodum', sans-serif;
-  line-height: 1.58;
-  letter-spacing: -.003em;
-  font-size: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-padding-bottom: 30px;
-  }
-
-  
-  h1 {
-    margin: 15px 0;
-    font-family: 'Bodoni Moda', sans-serif;
-    font-weight: bold;
-    font-style: normal;
-    font-size: 50px;
-    line-height: 1.15;
-    letter-spacing: -.02em;
-    color: rgba(0, 0, 0, 0.8);
-    -webkit-font-smoothing: antialiased;
-  }
-
-p {
   margin: 0;
-} 
+  padding: 0;
+  padding-bottom: 80px;
+  font-family: 'Gowun Dodum', sans-serif;
+  }
+
+  h1 {
+    margin: 25px;
+    font-family: 'Bodoni Moda', sans-serif;
+  }
 
   h3 {
+    padding: 0;
     margin: 0;
   }
 
   img {
     width: auto;
     heigth: auto;
-    margin-bottom: 15px;
-    margin-top: 15px;
-    border-radius: 100px;
-  }
-
-    .art-piece-detail-image {
-      border-radius: 100px;
-      box-shadow: 0 4px 20px hsla(0, 0%, 0%, 0.2);
+    border-radius: 90px;
   }
 
   .art-pieces-container {
@@ -69,13 +45,7 @@ p {
 
   textarea {
     border-radius: 10px;
-    font-size: large;
   }
-
-.submit-comment-button {
-  border-radius: 10px;
-    font-size: large;
-}
 
 .comment-items {
   list-style-type: none;
@@ -89,8 +59,31 @@ p {
   max-width: 800px;
 }
 
-.comment-date{
-  font-size: medium;
+button{
+  border: none;
+  color: #f8f9e3;
+  background-color: #545334;
+  padding: 5px 15px;
+  border-radius: 25px;
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+textarea{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+textarea:focus{
+  outline: none;
+  border: solid 2px #545334;
+}
+
+textarea:-moz-focus {
+  outline: none;
+  border: solid 2px #545334;
+}
 `;

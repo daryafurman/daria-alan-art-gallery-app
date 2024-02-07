@@ -11,15 +11,11 @@ const ArtContainer = styled.div`
   justify-content: center;
   align-items: center;
   max-width: 700px;
-  padding: 20px;
+  padding: 30px;
   margin: 40px;
-  background: #ffffff08;
-  border-radius: 100px;
+  border-radius: 80px;
   box-shadow: 0 4px 30px #0000001a;
-  backdrop-filter: blur(16.4px);
-  -webkit-backdrop-filter: blur(16.4px);
 `;
-
 
 export default function ArtPiecePreview({ title, artist, image, piece }) {
   return (
@@ -31,7 +27,7 @@ export default function ArtPiecePreview({ title, artist, image, piece }) {
           src={image}
           alt={title}
           width={500}
-          height={300}
+          height={400}
         />
       </Link>
       <p>Artist: {artist}</p>
