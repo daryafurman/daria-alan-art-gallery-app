@@ -17,7 +17,17 @@ const ArtContainer = styled.div`
   box-shadow: 0 4px 30px #0000001a;
 `;
 
-export default function ArtPiecePreview({ title, artist, image, piece }) {
+export default function ArtPiecePreview({
+  title,
+  artist,
+  image,
+  piece,
+  onToggleFavorite,
+}) {
+  const isFavorite = false; //  determining whether it's a favorite or not to start with
+
+  console.log(piece);
+
   return (
     <ArtContainer>
       <h3>{title}</h3>
@@ -30,6 +40,11 @@ export default function ArtPiecePreview({ title, artist, image, piece }) {
           height={400}
         />
       </Link>
+      {/* <FavoriteButton
+        isFavorite={isFavorite}
+        onToggleFavorite={onToggleFavorite}
+        slug={piece}
+      /> */}
       <p>Artist: {artist}</p>
     </ArtContainer>
   );

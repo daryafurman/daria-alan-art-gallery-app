@@ -2,6 +2,7 @@ import Image from "next/image";
 import CommentForm from "./CommentForm";
 import styled from "styled-components";
 import { StyledHeader } from "./ArtPieces";
+import FavoriteButton from "./FavoriteButton";
 
 const Color = styled.span`
   color: ${(props) => props.color};
@@ -34,7 +35,7 @@ const StyledArtDetails = styled.div`
   text-align: left;
   flex-grow: 1;
   position: relative;
-  top: 250px;
+  top: 170px;
 `;
 const StyledCommentsSection = styled.div`
   min-width: 600px;
@@ -58,6 +59,8 @@ export default function ArtPieceDetails({
   comments,
   onSubmitComment,
   colors,
+  isFavorite,
+  onToggleFavorite,
 }) {
   console.log("Colors:", colors);
   return (
@@ -77,6 +80,11 @@ export default function ArtPieceDetails({
             />
           </StyledImageAndColors>
           <StyledArtDetails>
+            <FavoriteButton
+              isFavorite={isFavorite}
+              onToggleFavorite={onToggleFavorite}
+            />
+            <br />
             <h3>Artist: {artist}</h3>
             <h3>Year: {year}</h3>
             <h3>Genre: {genre}</h3>

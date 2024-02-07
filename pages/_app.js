@@ -20,6 +20,8 @@ export const useArtPieces = () => {
     fetcher
   );
 
+  console.log("Data:", data);
+
   return {
     artPieces: data,
     isLoading: !error && !data,
@@ -27,24 +29,33 @@ export const useArtPieces = () => {
   };
 };
 
+// ArtProvider component should include artPiecesInfo
 export const ArtProvider = ({ children }) => {
-  const artState = useArtPieces();
+  const { artPiecesInfo, ...artState } = useArtPieces(); // Destructure artState
 
-  return <ArtContext.Provider value={artState}>{children}</ArtContext.Provider>;
+  return (
+    <ArtContext.Provider value={{ ...artState, artPiecesInfo }}>
+      {children}
+    </ArtContext.Provider>
+  );
 };
 
 export default function App({ Component, pageProps }) {
+  // New state for art pieces information
   const [artPiecesInfo, setArtPiecesInfo] = useImmerLocalStorageState(
     "art-pieces-info",
     { defaultValue: [] }
   );
+
   function handleToggleFavorite(slug) {
+    console.log("on function ", slug);
+
     const artPiece = artPiecesInfo.find((piece) => piece.slug === slug);
     if (artPiece) {
       setArtPiecesInfo(
         artPiecesInfo.map((pieceInfo) =>
           pieceInfo.slug === slug
-            ? { slug, isFavorite: !pieceInfo.isFavorite }
+            ? { ...pieceInfo, isFavorite: !pieceInfo.isFavorite }
             : pieceInfo
         )
       );

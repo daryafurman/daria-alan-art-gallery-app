@@ -25,10 +25,15 @@ export default function Spotlight({
   return (
     <>
       <SpotlightArt>
+        <h2>SPOTLIGHT</h2>
         <Link href={`/art-pieces/${encodeURIComponent(piece)}`}>
           <StyledImage src={image} width={500} height={600} alt={title} />
         </Link>
         <p>Artist: {artist}</p>
+        {/* <FavoriteButton
+          isFavorite={isFavorite}
+          onToggleFavorite={() => onToggleFavorite(piece)}
+        /> */}
       </SpotlightArt>
     </>
   );

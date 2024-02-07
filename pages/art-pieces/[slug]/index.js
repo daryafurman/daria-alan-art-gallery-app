@@ -3,7 +3,10 @@ import { useRouter } from "next/router";
 import ArtPieceDetails from "@/components/ArtPieceDetails";
 import useLocalStorageState from "use-local-storage-state";
 
-export default function ArtPieceDetailsPage({ artPiecesInfo }) {
+export default function ArtPieceDetailsPage({
+  artPiecesInfo,
+  onToggleFavorite,
+}) {
   const router = useRouter();
   const { slug } = router.query;
 
@@ -59,6 +62,7 @@ export default function ArtPieceDetailsPage({ artPiecesInfo }) {
         comments={comments}
         onSubmitComment={handleCommentSubmit}
         colors={selectedArtPiece.colors}
+        onToggleFavorite={onToggleFavorite}
       />
     </>
   );

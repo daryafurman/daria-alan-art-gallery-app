@@ -1,7 +1,7 @@
 import ArtPieces from "@/components/ArtPieces";
 import { useArtPieces } from "../_app";
 
-export default function ArtPiecesPage() {
+export default function ArtPiecesPage({ onToggleFavorite }) {
   const { artPieces, isLoading, isError } = useArtPieces();
   if (isLoading) {
     return <p>Loading...</p>;
@@ -12,7 +12,7 @@ export default function ArtPiecesPage() {
   }
   return (
     <>
-      <ArtPieces pieces={artPieces} />
+      <ArtPieces pieces={artPieces} onToggleFavorite={onToggleFavorite} />
     </>
   );
 }
