@@ -10,19 +10,23 @@ const StyledHeader = styled.h1`
 `;
 
 // component should render a list of ArtPiecePreview
-export default function ArtPieces({ pieces }) {
+export function ArtPieces({ pieces, handleToggleFavorite, showFavorites }) {
+  console.log("ArtPieces - pieces:", pieces);
+  const filteredPieces = showFavorites
+    ? pieces.filter((piece) => piece.isFavorite)
+    : pieces;
+
   return (
     <>
       <StyledHeader>ART GALLERY</StyledHeader>
 
       <List>
-        {pieces?.map((piece) => (
+        {filteredPieces?.map((piece) => (
           <li key={piece.slug}>
             <ArtPiecePreview
-              slug={piece.slug}
+              piece={piece.slug}
               title={piece.name}
               artist={piece.artist}
-              isFavorited={piece.isFavorite}
               image={piece.imageSource}
             />
           </li>

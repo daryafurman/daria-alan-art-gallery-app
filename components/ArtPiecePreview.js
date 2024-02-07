@@ -32,6 +32,13 @@ const ArtPiecePreview = ({
   const toggleFavorite = () => {
     onToggleFavorite(slug);
   };
+
+  // console.log("ArtPiecePreview - slug:", slug);
+  // console.log("ArtPiecePreview - title:", title);
+  // console.log("ArtPiecePreview - artist:", artist);
+  // console.log("ArtPiecePreview - isFavorited:", isFavorited);
+  // console.log("ArtPiecePreview - image:", image);
+
   return (
     <ArtContainer>
       <h3>{title}</h3>
@@ -43,11 +50,8 @@ const ArtPiecePreview = ({
           slug={slug}
         />
         <Link href={`/art-pieces/${encodeURIComponent(slug)}`}>
-          {image ? (
-            <Image src={image} alt={title} width={500} height={300} />
-          ) : (
-            <div>No image available</div>
-          )}
+          {/* Use a simple img tag for testing */}
+          <Image src={image} alt={title} width={500} height={300} />
         </Link>
       </ArtImageContainer>
       <p>Artist: {artist}</p>

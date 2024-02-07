@@ -1,4 +1,4 @@
-import ArtPieces from "@/components/ArtPieces";
+import { ArtPieces } from "@/components/ArtPieces";
 import { useArtPieces } from "../_app";
 
 export default function ArtPiecesPage() {

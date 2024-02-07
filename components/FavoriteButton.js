@@ -2,6 +2,7 @@ import Image from "next/image.js";
 import styled from "styled-components";
 import { useContext } from "react";
 import { ArtContext } from "../pages/_app";
+import { useState } from "react";
 
 const Button = styled.button`
   position: ${({ $positionAbsolute }) =>
@@ -9,7 +10,8 @@ const Button = styled.button`
   right: 1rem;
   top: 2rem;
   z-index: 1;
-  background-color: ${({ isFavorite }) => (isFavorite ? "lightcoral" : "none")};
+  border: 1px solid #ccc; // Adjust the border color and width
+
   border-radius: 50%;
   display: grid;
   place-items: center;
@@ -26,8 +28,10 @@ export default function FavoriteButton({
   positionAbsolute = false,
 }) {
   const { handleToggleFavorite } = useContext(ArtContext);
+  const [isButtonActive, setIsButtonActive] = useState(isFavorite);
 
   const toggleFavorite = () => {
+    setIsButtonActive(!isButtonActive);
     handleToggleFavorite(slug);
   };
 
@@ -40,7 +44,16 @@ export default function FavoriteButton({
       $positionAbsolute={positionAbsolute}
       slug={slug}
     >
-      <Image src="/assets/heart.svg" width={40} height={40} alt="" />
+      {isButtonActive ? (
+        <Image
+          src="/assets/filled-heart.svg"
+          alt="Like"
+          width={40}
+          height={40}
+        />
+      ) : (
+        <Image src="/assets/heart.svg" width={40} height={40} alt="unLike" />
+      )}
     </Button>
   );
 }

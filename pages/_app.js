@@ -1,10 +1,7 @@
 import GlobalStyle from "../styles";
 import useSWR from "swr";
-import { createContext, useContext } from "react";
 import Layout from "@/components/Layout";
 import { useImmerLocalStorageState } from "../public/lib/hook/useImmerLocalStorageState.js";
-
-export const ArtContext = createContext(); // Creating a context to hold the global state
 
 export const fetcher = async (url) => {
   const response = await fetch(url);
@@ -27,12 +24,22 @@ export const useArtPieces = () => {
   };
 };
 
-export const ArtProvider = ({ children }) => {
-  const artState = useArtPieces();
+export default function App({ Component, pageProps }) {
+  const { artPieces, isLoading, isError } = useArtPieces();
   const [artPiecesInfo, setArtPiecesInfo] = useImmerLocalStorageState(
     "art-pieces-info",
     { defaultValue: [] }
   );
+
+  if (isLoading) {
+    // Handle loading state
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    // Handle error state
+    return <div>Error fetching art pieces!</div>;
+  }
 
   function handleToggleFavorite(slug) {
     const artPiece = artPiecesInfo.find((piece) => piece.slug === slug);
@@ -48,37 +55,15 @@ export const ArtProvider = ({ children }) => {
       setArtPiecesInfo([...artPiecesInfo, { slug, isFavorite: true }]);
     }
   }
-
   return (
-    <ArtContext.Provider
-      value={{ artState, artPiecesInfo, handleToggleFavorite }}
-    >
-      {children}
-    </ArtContext.Provider>
-  );
-};
-
-export default function App({ Component, pageProps }) {
-  const { artPieces, isLoading, isError } = useArtPieces();
-
-  if (isLoading) {
-    // Handle loading state
-    return <div>Loading...</div>;
-  }
-
-  if (isError) {
-    // Handle error state
-    return <div>Error fetching art pieces!</div>;
-  }
-
-  return (
-    <>
+    <Layout>
       <GlobalStyle />
-      <ArtProvider>
-        <Layout>
-          <Component {...pageProps} artPieces={artPieces} />
-        </Layout>
-      </ArtProvider>
-    </>
+      <Component
+        {...pageProps}
+        artPieces={artPieces}
+        artPiecesInfo={artPiecesInfo}
+        onToggleFavorite={handleToggleFavorite}
+      />
+    </Layout>
   );
 }
