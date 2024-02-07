@@ -58,6 +58,7 @@ export default function ArtPieceDetailsPage({ artPiecesInfo }) {
         genre={selectedArtPiece.genre}
         comments={comments}
         onSubmitComment={handleCommentSubmit}
+        colors={selectedArtPiece.colors}
       />
     </>
   );
