@@ -18,11 +18,12 @@ export default function ArtPieceDetailsPage({ artPiecesInfo }) {
   return (
     <>
       <ArtPieceDetails
-        title={selectedArtPiece.name}
-        image={selectedArtPiece.imageSource}
+        title={selectedArtPiece.title}
+        image={selectedArtPiece.image}
         artist={selectedArtPiece.artist}
-        year={selectedArtPiece.year}
-        genre={selectedArtPiece.genre}
+        slug={selectedArtPiece.slug}
+        onToggleFavorite={selectedArtPiece.onToggleFavorite}
+        isFavorited={selectedArtPiece.isFavorited}
       />
     </>
   );

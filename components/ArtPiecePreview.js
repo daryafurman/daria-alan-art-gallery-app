@@ -43,13 +43,11 @@ const ArtPiecePreview = ({
           slug={slug}
         />
         <Link href={`/art-pieces/${encodeURIComponent(slug)}`}>
-          <Image
-            className="box"
-            src={image}
-            alt={title}
-            width={500}
-            height={300}
-          />
+          {image ? (
+            <Image src={image} alt={title} width={500} height={300} />
+          ) : (
+            <div>No image available</div>
+          )}
         </Link>
       </ArtImageContainer>
       <p>Artist: {artist}</p>

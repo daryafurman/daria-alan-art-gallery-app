@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { ArtContext } from "../_app";
 
 export default function FavoritesPage() {
-  const { artPiecesInfo } = useContext(ArtContext);
+  const { artPiecesInfo, handleToggleFavorite } = useContext(ArtContext);
 
   // Filter artPiecesInfo to get only favorite art pieces
   const favoriteArtPieces = artPiecesInfo.filter(
@@ -12,7 +12,11 @@ export default function FavoritesPage() {
 
   return (
     <div>
-      <ArtPieces pieces={favoriteArtPieces} />
+      <h1>Favorites:</h1>
+      <ArtPieces
+        pieces={favoriteArtPieces}
+        onToggleFavorite={handleToggleFavorite}
+      />
     </div>
   );
 }

@@ -4,7 +4,6 @@ import { createContext, useContext } from "react";
 import Layout from "@/components/Layout";
 import { useImmerLocalStorageState } from "../public/lib/hook/useImmerLocalStorageState.js";
 
-
 export const ArtContext = createContext(); // Creating a context to hold the global state
 
 export const fetcher = async (url) => {
