@@ -1,6 +1,7 @@
 import ArtPieces from "@/components/ArtPieces";
 import Spotlight from "@/components/Spotlight";
 import { useArtPieces } from "./_app";
+import { StyledHeader } from "@/components/ArtPieces";
 
 const getRandomArtPiece = (artPieces) => {
   const randomIndex = Math.floor(Math.random() * artPieces.length);
@@ -22,18 +23,12 @@ const SpotlightPage = () => {
 
   return (
     <>
-      <h1>
-        ART GALLERY{" "}
-        <style jsx>{`
-          h1 {
-            text-align: center;
-          }
-        `}</style>
-      </h1>
+      <StyledHeader>ART GALLERY</StyledHeader>
       <Spotlight
         image={spotlightPiece.imageSource}
         artist={spotlightPiece.artist}
         title={spotlightPiece.name}
+        piece={spotlightPiece.slug}
       />
     </>
   );

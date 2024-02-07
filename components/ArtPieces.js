@@ -2,11 +2,15 @@ import ArtPiecePreview from "./ArtPiecePreview";
 import styled from "styled-components";
 
 const List = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
   list-style: none;
+  justify-content: center;
 `;
 
-const StyledHeader = styled.h1`
+export const StyledHeader = styled.h1`
   text-align: center;
+  font-size: xxx-large;
 `;
 
 // component should render a list of ArtPiecePreview

@@ -25,23 +25,20 @@ export default function CommentForm({ onSubmitComment }) {
   };
 
   return (
-    <form className="comment-form" onSubmit={handleCommentSubmit}>
+    <form onSubmit={handleCommentSubmit}>
       <label>
-        Add a comment:
-        <br />
+        <p>Add a comment:</p>
         <textarea
           placeholder="Enter your comment..."
-          rows={4}
-          cols={40}
+          rows={5}
+          cols={100}
           type="text"
           value={commentText}
           onChange={(e) => setCommentText(e.target.value)}
         />
       </label>
       <br />
-      <button type="submit" className="submit-comment-button">
-        Send
-      </button>
+      <button type="submit">Send</button>
     </form>
   );
 }
