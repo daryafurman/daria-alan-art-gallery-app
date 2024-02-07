@@ -8,7 +8,6 @@ const Button = styled.button`
   top: 1.5rem;
   z-index: 1;
   background-color: ${(props) => (props.isFavorite ? "lightcoral" : "white")};
-
   display: grid;
   place-items: center;
   width: 50px;
@@ -20,11 +19,12 @@ export default function FavoriteButton({
   isFavorite,
   onToggleFavorite,
   positionAbsolute = false,
+  slug,
 }) {
   return (
     <Button
       type="button"
-      onClick={onToggleFavorite}
+      onClick={() => onToggleFavorite(slug)}
       isFavorite={isFavorite}
       aria-label={isFavorite ? "unlike" : "like"}
       $positionAbsolute={positionAbsolute}
