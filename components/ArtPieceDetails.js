@@ -52,19 +52,3 @@ export default function ArtPieceDetails({
     </>
   );
 }
-
-{
-  /* <ul className="comment-items">
-          {comments.map((comment, index) => (
-            <li key={index}>
-              {comment.text}
-              <br />
-              <br />
-              <div className="comment-date">Posted on {comment.date}</div>
-              <hr />
-            </li>
-          ))}
-        </ul> */
-}
-
-// In this modification, I added a conditional check comments && comments.length > 0 before mapping over the comments array. This ensures that the mapping only occurs if comments is defined and has at least one item. If comments is undefined or empty, it will display a message saying "No comments yet.".
